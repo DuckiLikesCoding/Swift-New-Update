@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace piglatin
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            List<string> translatedArray = new List<string>();
+
+            Console.WriteLine("Please enter a sentence to translate into Pig Latin");
+            var sentence = Console.ReadLine();
+            sentence = sentence.Trim(); //gets rid of any spaces at the start and end of the string
+
+            string[] sentenceArray = sentence.Split(' '); //splits the sentence into an array
+
+            for(int word = 0; word < sentenceArray.Length; word++) //creates a for loop to go through each word in the array
+            {
+
+                var translated = sentenceArray[word] + sentenceArray[word][0]; //adds the first letter to the end of the string and stores in a new var
+                translated = translated.Remove(0, 1); //removes all letters in between inclusive index 0 and exclusive index 1
+                translated = translated + "ay"; //adds ay to the end of the word
+                translatedArray.Add(translated); //adds the translated word to a different array
+            }
+
+            foreach(string word in translatedArray) //for each word in the array
+            {
+                Console.Write(word + " "); //print the word and a space on the same line
+            }
+
+            Console.WriteLine(); //create a new line at the end to make it look nicer in debug mode
+
+        }
+    }
+} //this code took about an hour.
