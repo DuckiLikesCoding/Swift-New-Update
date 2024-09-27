@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace testbed
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Please enter a word to translate into Pig Latin");
+            var word = Console.ReadLine();
+            word = word.ToLower();   //makes everything lower case
+            word = word.Trim();   //gets rid of any spaces at the start and end of the string
+
+            var translated = word + word[0];   //adds the first letter to the end of the string
+            translated = translated.Remove(0,1);   //removes all letters in between inclusive index 0 and exclusive index 1
+            translated = translated + "ay";   //adds ay to the end of the word
+
+            Console.WriteLine(translated);
+        }
+    }
+}   //this code took about 10-15 minutes. 
